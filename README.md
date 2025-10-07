@@ -2,6 +2,8 @@
 
 A comprehensive demonstration of modern HTML5 features and advanced techniques for web development.
 
+**You are most welcome to use this code in your commercial projects, all that I ask in return is that you credit my work by providing a link back to this repository. Thank you & Enjoy!**
+
 ## 🚀 Features Demonstrated
 
 - **Semantic HTML5 Elements** - Modern document structure and accessibility
