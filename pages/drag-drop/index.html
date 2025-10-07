@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop API - Advanced HTML Repository</title>
+    <meta name="description"
+        content="Comprehensive demonstration of HTML5 Drag & Drop API with file handling, sortable lists, and advanced interactions">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav {
+            background: #34495e;
+            padding: 1rem;
+        }
+
+        .nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #2c3e50;
+        }
+
+        .main-content {
+            padding: 2rem;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .demo-header {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .demo-header h2 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-content {
+            padding: 1.5rem;
+        }
+
+        /* Drag and Drop Styles */
+        .drag-zone {
+            border: 3px dashed #ccc;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .drag-zone.drag-over {
+            border-color: #007bff;
+            background: #e3f2fd;
+            transform: scale(1.02);
+        }
+
+        .drag-zone.drag-error {
+            border-color: #dc3545;
+            background: #ffebee;
+        }
+
+        .draggable-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: 8px;
+            cursor: move;
+            user-select: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .draggable-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .draggable-item.dragging {
+            opacity: 0.5;
+            transform: rotate(5deg);
+        }
+
+        .sortable-list {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            min-height: 300px;
+            background: #f8f9fa;
+        }
+
+        .sortable-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .sortable-item:hover {
+            background: #f0f8ff;
+            transform: translateX(5px);
+        }
+
+        .sortable-item.drag-over {
+            border-color: #007bff;
+            background: #e3f2fd;
+        }
+
+        .file-preview {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            background: #007bff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .file-size {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            margin: 1rem 0;
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.25rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .log {
+            background: #1e1e1e;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 1rem;
+            border-radius: 5px;
+            height: 200px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .trash-zone {
+            background: #ffebee;
+            border: 3px dashed #f44336;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trash-zone.drag-over {
+            background: #ffcdd2;
+            transform: scale(1.05);
+        }
+
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 8px;
+            margin: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎯 Drag & Drop API</h1>
+            <p>Complete demonstration of HTML5 Drag and Drop functionality with file handling and advanced interactions
+            </p>
+        </header>
+
+        <nav class="nav">
+            <a href="../../index.html">← Back to Home</a>
+            <a href="#file-drop">File Drop</a>
+            <a href="#sortable">Sortable Lists</a>
+            <a href="#custom">Custom Drag</a>
+            <a href="#advanced">Advanced Features</a>
+        </nav>
+
+        <main class="main-content">
+            <!-- File Drop Zone Demo -->
+            <section id="file-drop" class="demo-section">
+                <div class="demo-header">
+                    <h2>📁 File Drop Zone</h2>
+                    <p>Drag and drop files from your computer to upload and preview them</p>
+                </div>
+                <div class="demo-content">
+                    <div class="grid">
+                        <div>
+                            <div id="fileDropZone" class="drag-zone">
+                                <div>📄</div>
+                                <h3>Drop Files Here</h3>
+                                <p>Drag and drop files or click to select</p>
+                                <input type="file" id="fileInput" multiple accept="*/*" style="display: none;">
+                            </div>
+                            <div class="controls">
+                                <button class="btn" onclick="document.getElementById('fileInput').click()">Choose
+                                    Files</button>
+                                <button class="btn btn-secondary" onclick="clearFiles()">Clear All</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Uploaded Files</h3>
+                            <div id="filePreview" class="file-preview">
+                                <p>No files uploaded yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sortable Lists Demo -->
+            <section id="sortable" class="demo-section">
+                <div class="demo-header">
+                    <h2>📋 Sortable Lists</h2>
+                    <p>Drag and drop items to reorder lists and move items between containers</p>
+                </div>
+                <div class="demo-content">
+                    <div class="grid">
+                        <div>
+                            <h3>To Do</h3>
+                            <div id="todoList" class="sortable-list" data-list="todo">
+                                <div class="sortable-item" draggable="true" data-id="1">
+                                    <span>📝 Plan project structure</span>
+                                    <span class="file-size">High Priority</span>
+                                </div>
+                                <div class="sortable-item" draggable="true" data-id="2">
+                                    <span>🎨 Design user interface</span>
+                                    <span class="file-size">Medium Priority</span>
+                                </div>
+                                <div class="sortable-item" draggable="true" data-id="3">
+                                    <span>⚡ Implement functionality</span>
+                                    <span class="file-size">High Priority</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>In Progress</h3>
+                            <div id="inProgressList" class="sortable-list" data-list="progress">
+                                <div class="sortable-item" draggable="true" data-id="4">
+                                    <span>🔧 Set up development environment</span>
+                                    <span class="file-size">In Progress</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Done</h3>
+                            <div id="doneList" class="sortable-list" data-list="done">
+                                <div class="sortable-item" draggable="true" data-id="5">
+                                    <span>✅ Initialize repository</span>
+                                    <span class="file-size">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <button class="btn" onclick="addNewTask()">Add New Task</button>
+                        <button class="btn btn-secondary" onclick="exportTasks()">Export Tasks</button>
+                        <button class="btn btn-danger" onclick="resetTasks()">Reset Lists</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Custom Drag Elements -->
+            <section id="custom" class="demo-section">
+                <div class="demo-header">
+                    <h2>🎨 Custom Drag Elements</h2>
+                    <p>Custom draggable elements with visual feedback and data transfer</p>
+                </div>
+                <div class="demo-content">
+                    <div class="grid">
+                        <div>
+                            <h3>Draggable Items</h3>
+                            <div class="draggable-item" draggable="true" data-type="text" data-content="Hello World!">
+                                📝 Text Data: "Hello World!"
+                            </div>
+                            <div class="draggable-item" draggable="true" data-type="url"
+                                data-content="https://github.com">
+                                🔗 URL: https://github.com
+                            </div>
+                            <div class="draggable-item" draggable="true" data-type="html"
+                                data-content="<strong>Bold Text</strong>">
+                                🏷️ HTML: &lt;strong&gt;Bold Text&lt;/strong&gt;
+                            </div>
+                            <div class="draggable-item" draggable="true" data-type="json"
+                                data-content='{"name":"John","age":30}'>
+                                📊 JSON: {"name":"John","age":30}
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Drop Target</h3>
+                            <div id="customDropZone" class="drag-zone">
+                                <div>🎯</div>
+                                <h3>Drop Items Here</h3>
+                                <p>Data will be processed based on type</p>
+                            </div>
+                            <div id="droppedContent" class="file-preview">
+                                <p>No data dropped yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Features -->
+            <section id="advanced" class="demo-section">
+                <div class="demo-header">
+                    <h2>🚀 Advanced Features</h2>
+                    <p>Advanced drag and drop features including drag images, data validation, and complex interactions
+                    </p>
+                </div>
+                <div class="demo-content">
+                    <div class="grid">
+                        <div>
+                            <h3>Drag with Custom Image</h3>
+                            <div id="customImageDrag" class="draggable-item" draggable="true">
+                                🖼️ Drag me with custom image
+                            </div>
+
+                            <h3>Trash Zone</h3>
+                            <div id="trashZone" class="trash-zone">
+                                🗑️ Drop items here to delete
+                            </div>
+
+                            <h3>Upload Progress</h3>
+                            <div class="progress-bar">
+                                <div id="uploadProgress" class="progress-fill"></div>
+                            </div>
+                            <div id="progressText">Ready to upload...</div>
+                        </div>
+                        <div>
+                            <h3>Event Log</h3>
+                            <div id="eventLog" class="log"></div>
+                            <button class="btn btn-secondary" onclick="clearLog()">Clear Log</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Examples -->
+            <section class="demo-section">
+                <div class="demo-header">
+                    <h2>💻 Implementation Code</h2>
+                    <p>Key code examples for implementing drag and drop functionality</p>
+                </div>
+                <div class="demo-content">
+                    <h3>Basic Drag and Drop Setup</h3>
+                    <pre style="background: #f8f9fa; padding: 1rem; border-radius: 5px; overflow-x: auto;"><code>// Make element draggable
+element.draggable = true;
+
+// Handle drag start
+element.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', 'data');
+    e.dataTransfer.effectAllowed = 'move';
+});
+
+// Handle drop zone
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault(); // Allow drop
+});
+
+dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('text/plain');
+    // Process dropped data
+});</code></pre>
+
+                    <h3>File Drop Handling</h3>
+                    <pre style="background: #f8f9fa; padding: 1rem; border-radius: 5px; overflow-x: auto;"><code>dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const files = Array.from(e.dataTransfer.files);
+    
+    files.forEach(file => {
+        // Validate file type
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                // Display image preview
+                createImagePreview(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});</code></pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="drag-drop.js"></script>
+</body>
+
+</html>

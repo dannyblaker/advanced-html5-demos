@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Graphics Demo - Advanced HTML Features</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .canvas-demo {
+            background: var(--background-primary);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        canvas {
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            max-width: 100%;
+            height: auto;
+            cursor: crosshair;
+        }
+
+        .controls {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .controls button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+
+        .controls button:hover {
+            background: var(--primary-dark);
+        }
+
+        .controls input[type="range"] {
+            margin: 0 0.5rem;
+        }
+
+        .controls input[type="color"] {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+
+        .performance-stats {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: var(--border-radius);
+            font-family: var(--font-family-mono);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../../index.html">← Back to Home</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="demo-container">
+        <h1>Canvas Graphics Demonstration</h1>
+        <p>Interactive examples of 2D graphics, animations, and image processing using HTML5 Canvas.</p>
+
+        <div class="canvas-grid">
+            <!-- Drawing Canvas -->
+            <div class="canvas-demo">
+                <h3>Interactive Drawing</h3>
+                <canvas id="drawingCanvas" width="350" height="250"></canvas>
+                <div class="controls">
+                    <input type="color" id="brushColor" value="#2196F3" title="Brush Color">
+                    <input type="range" id="brushSize" min="1" max="50" value="5" title="Brush Size">
+                    <button onclick="clearDrawing()">Clear</button>
+                    <button onclick="saveDrawing()">Save</button>
+                </div>
+            </div>
+
+            <!-- Particle System -->
+            <div class="canvas-demo">
+                <h3>Particle System</h3>
+                <canvas id="particleCanvas" width="350" height="250"></canvas>
+                <div class="controls">
+                    <button onclick="toggleParticles()">Toggle Animation</button>
+                    <button onclick="addBurst()">Burst Effect</button>
+                    <input type="range" id="particleCount" min="10" max="200" value="50" title="Particle Count">
+                </div>
+                <div class="performance-stats" id="particleStats">
+                    FPS: <span id="fps">0</span> | Particles: <span id="particleCountDisplay">50</span>
+                </div>
+            </div>
+
+            <!-- Fractal Generator -->
+            <div class="canvas-demo">
+                <h3>Fractal Generator</h3>
+                <canvas id="fractalCanvas" width="350" height="250"></canvas>
+                <div class="controls">
+                    <button onclick="generateMandelbrot()">Mandelbrot</button>
+                    <button onclick="generateJulia()">Julia Set</button>
+                    <button onclick="generateSierpinski()">Sierpinski</button>
+                    <input type="range" id="fractalIterations" min="10" max="100" value="50" title="Iterations">
+                </div>
+            </div>
+
+            <!-- Image Processing -->
+            <div class="canvas-demo">
+                <h3>Image Processing</h3>
+                <canvas id="imageCanvas" width="350" height="250"></canvas>
+                <div class="controls">
+                    <input type="file" id="imageInput" accept="image/*" onchange="loadImage(event)">
+                    <br><br>
+                    <button onclick="applyFilter('grayscale')">Grayscale</button>
+                    <button onclick="applyFilter('sepia')">Sepia</button>
+                    <button onclick="applyFilter('invert')">Invert</button>
+                    <button onclick="applyFilter('blur')">Blur</button>
+                    <button onclick="resetImage()">Reset</button>
+                </div>
+            </div>
+
+            <!-- Game Demo -->
+            <div class="canvas-demo">
+                <h3>Simple Game</h3>
+                <canvas id="gameCanvas" width="350" height="250"></canvas>
+                <div class="controls">
+                    <button onclick="startGame()">Start Game</button>
+                    <button onclick="pauseGame()">Pause</button>
+                    <button onclick="resetGame()">Reset</button>
+                </div>
+                <div class="performance-stats">
+                    Score: <span id="gameScore">0</span> | Lives: <span id="gameLives">3</span>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem;">
+                    Use arrow keys or WASD to move
+                </p>
+            </div>
+
+            <!-- Data Visualization -->
+            <div class="canvas-demo">
+                <h3>Data Visualization</h3>
+                <canvas id="chartCanvas" width="350" height="250"></canvas>
+                <div class="controls">
+                    <button onclick="generateChart('bar')">Bar Chart</button>
+                    <button onclick="generateChart('line')">Line Chart</button>
+                    <button onclick="generateChart('pie')">Pie Chart</button>
+                    <button onclick="animateChart()">Animate</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="component-demo"
+            style="background: var(--background-primary); border-radius: var(--border-radius-lg); padding: 2rem; box-shadow: var(--shadow-md);">
+            <h2>Canvas API Features Demonstrated</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <div>
+                    <h4>Drawing Operations</h4>
+                    <ul>
+                        <li>Path drawing and fills</li>
+                        <li>Gradients and patterns</li>
+                        <li>Transformations</li>
+                        <li>Compositing modes</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Animation Techniques</h4>
+                    <ul>
+                        <li>requestAnimationFrame</li>
+                        <li>Particle systems</li>
+                        <li>Sprite animation</li>
+                        <li>Easing functions</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Image Processing</h4>
+                    <ul>
+                        <li>Pixel manipulation</li>
+                        <li>Filters and effects</li>
+                        <li>Image data operations</li>
+                        <li>Real-time processing</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Performance</h4>
+                    <ul>
+                        <li>Efficient rendering</li>
+                        <li>Frame rate monitoring</li>
+                        <li>Memory management</li>
+                        <li>Optimization techniques</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./canvas-graphics.js"></script>
+</body>
+
+</html>

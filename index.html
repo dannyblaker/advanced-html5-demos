@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Advanced HTML5 Features Repository - Comprehensive demonstrations of modern web technologies">
+    <meta name="keywords" content="HTML5, CSS3, JavaScript, Web APIs, Canvas, PWA" <meta name="author"
+        content="Advanced HTML Repository">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Advanced HTML Features Repository">
+    <meta property="og:description" content="Comprehensive demonstrations of modern HTML5 and web technologies">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/advanced-html-features/">
+    <meta property="og:image" content="./assets/images/og-image.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Advanced HTML Features Repository">
+    <meta name="twitter:description" content="Comprehensive demonstrations of modern HTML5 and web technologies">
+    <meta name="twitter:image" content="./assets/images/twitter-card.png">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2196F3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Advanced HTML">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="alternate icon" href="./assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./assets/css/main.css" as="style">
+    <link rel="preload" href="./assets/js/main.js" as="script">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+    <title>Advanced HTML Features Repository</title>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header with navigation -->
+    <header class="main-header" role="banner">
+        <nav class="main-nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>
+                        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+                            <rect width="40" height="40" rx="8" fill="currentColor" />
+                            <text x="20" y="28" text-anchor="middle" fill="white" font-size="18"
+                                font-weight="bold">H5</text>
+                        </svg>
+                        Advanced HTML
+                    </h1>
+                </div>
+
+                <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu"
+                    aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="menuitem"><a href="#features">Features</a></li>
+                    <li role="menuitem"><a href="#demos">Demos</a></li>
+                    <li role="menuitem"><a href="#documentation">Docs</a></li>
+                    <li role="menuitem"><a href="https://github.com/yourusername/advanced-html-features" target="_blank"
+                            rel="noopener">GitHub</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main id="main-content" role="main">
+        <!-- Hero section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h2 id="hero-title" class="hero-title">
+                        Explore Advanced HTML5 Features
+                    </h2>
+                    <p class="hero-description">
+                        Interactive demonstrations of modern HTML5 features including Canvas graphics,
+                        Web Components, advanced forms, drag & drop interfaces, and Progressive Web App capabilities.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#demos" class="btn btn-primary">View Demos</a>
+                        <a href="https://github.com/yourusername/advanced-html-features" class="btn btn-secondary"
+                            target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <canvas id="hero-canvas" width="400" height="300"
+                        aria-label="Interactive 3D visualization"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features section -->
+        <section id="features" class="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="section-title">Advanced Features</h2>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Canvas Graphics</h3>
+                        <p>Interactive 2D drawing, animations, particles, and data visualizations</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Web Components</h3>
+                        <p>Custom elements, Shadow DOM, and reusable component architecture</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Progressive Web App</h3>
+                        <p>Service workers, offline functionality, and native app-like experience</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🖱️</div>
+                        <h3>Drag & Drop API</h3>
+                        <p>File handling, sortable interfaces, and interactive drag operations</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">�</div>
+                        <h3>Advanced Forms</h3>
+                        <p>HTML5 input types, validation, and accessible form design</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h3>Semantic HTML</h3>
+                        <p>Modern document structure, accessibility, and semantic markup</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demos section -->
+        <section id="demos" class="demos" aria-labelledby="demos-title">
+            <div class="container">
+                <h2 id="demos-title" class="section-title">Interactive Demonstrations</h2>
+                <div class="demos-grid">
+                    <a href="./pages/semantic-html/" class="demo-card">
+                        <div class="demo-image">
+                            <div class="demo-placeholder">📄</div>
+                        </div>
+                        <div class="demo-content">
+                            <h3>Semantic HTML5</h3>
+                            <p>Modern semantic elements and document structure</p>
+                            <span class="demo-tag">Accessibility</span>
+                        </div>
+                    </a>
+
+                    <a href="./pages/advanced-forms/" class="demo-card">
+                        <div class="demo-image">
+                            <div class="demo-placeholder">📝</div>
+                        </div>
+                        <div class="demo-content">
+                            <h3>Advanced Forms</h3>
+                            <p>HTML5 form controls and validation</p>
+                            <span class="demo-tag">Validation</span>
+                        </div>
+                    </a>
+
+                    <a href="./pages/web-components/" class="demo-card">
+                        <div class="demo-image">
+                            <div class="demo-placeholder">🧩</div>
+                        </div>
+                        <div class="demo-content">
+                            <h3>Web Components</h3>
+                            <p>Custom elements and Shadow DOM</p>
+                            <span class="demo-tag">Reusability</span>
+                        </div>
+                    </a>
+
+                    <a href="./pages/canvas-graphics/" class="demo-card">
+                        <div class="demo-image">
+                            <div class="demo-placeholder">🎨</div>
+                        </div>
+                        <div class="demo-content">
+                            <h3>Canvas Graphics</h3>
+                            <p>2D graphics and animations</p>
+                            <span class="demo-tag">Graphics</span>
+                        </div>
+                    </a>
+
+                    <a href="./pages/drag-drop/" class="demo-card">
+                        <div class="demo-image">
+                            <div class="demo-placeholder">🖱️</div>
+                        </div>
+                        <div class="demo-content">
+                            <h3>Drag & Drop</h3>
+                            <p>Interactive drag and drop interfaces</p>
+                            <span class="demo-tag">Interaction</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation section -->
+        <section id="documentation" class="installation" aria-labelledby="installation-title">
+            <div class="container">
+                <h2 id="installation-title" class="section-title">Getting Started</h2>
+                <div class="installation-content">
+                    <div class="code-block">
+                        <pre><code># Clone the repository
+git clone https://github.com/yourusername/advanced-html-features.git
+
+# Navigate to the project
+cd advanced-html-features
+
+# Serve locally (optional)
+python -m http.server 8000</code></pre>
+                        <button class="copy-btn" aria-label="Copy code to clipboard">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p>
+                        This repository contains comprehensive examples of advanced HTML5 features.
+                        Each demonstration includes well-commented code and explanations of the underlying concepts.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Advanced HTML Repository</h3>
+                    <p>Demonstrating the power of modern web technologies</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#demos">Demos</a></li>
+                        <li><a href="https://github.com/yourusername/advanced-html-features">GitHub</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Technologies</h4>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript ES6+</li>
+                        <li>Web APIs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Advanced HTML Repository. Released under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./assets/js/main.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+
+</html>

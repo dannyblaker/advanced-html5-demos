@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Semantic HTML5 elements demonstration - proper document structure and accessibility">
+    <title>Semantic HTML5 Demo - Advanced HTML Features</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .semantic-demo {
+            background: var(--background-primary);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin: 2rem 0;
+        }
+
+        .code-example {
+            background: var(--background-dark);
+            color: var(--text-light);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            font-family: var(--font-family-mono);
+            font-size: 0.9rem;
+        }
+
+        .semantic-layout {
+            border: 2px dashed #ccc;
+            margin: 1rem 0;
+            background: #f9f9f9;
+        }
+
+        .semantic-layout header,
+        .semantic-layout nav,
+        .semantic-layout main,
+        .semantic-layout aside,
+        .semantic-layout footer {
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: var(--border-radius);
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .semantic-layout header {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+        }
+
+        .semantic-layout nav {
+            background: #E3F2FD;
+        }
+
+        .semantic-layout main {
+            background: #F5F5F5;
+            min-height: 200px;
+        }
+
+        .semantic-layout aside {
+            background: #FFF3E0;
+        }
+
+        .semantic-layout footer {
+            background: #E8F5E8;
+        }
+
+        .article-demo {
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .article-demo header {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .article-demo .content {
+            padding: 1.5rem;
+        }
+
+        .article-demo footer {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        .microdata-demo {
+            background: #fff;
+            border: 2px solid #4CAF50;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .accessibility-demo {
+            background: #fff;
+            border: 2px solid #FF9800;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .landmark-highlight {
+            background: rgba(33, 150, 243, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .grid-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skip-link-demo {
+            position: relative;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+
+        .skip-link-demo .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link-demo .skip-link:focus {
+            top: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../../index.html">← Back to Home</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="demo-container">
+        <h1>Semantic HTML5 Demonstration</h1>
+        <p>Modern semantic elements that provide meaning and structure to web documents, improving accessibility and
+            SEO.</p>
+
+        <!-- Document Structure -->
+        <section class="semantic-demo">
+            <h2>Document Structure with Semantic Elements</h2>
+            <p>HTML5 provides semantic elements that describe the meaning of content, not just its appearance.</p>
+
+            <div class="semantic-layout">
+                <header>
+                    <strong>&lt;header&gt;</strong> - Site header, page header, or section header
+                    <p>Contains headings, logos, navigation, introductory content</p>
+                </header>
+
+                <nav>
+                    <strong>&lt;nav&gt;</strong> - Navigation links
+                    <p>Primary navigation, breadcrumbs, pagination</p>
+                </nav>
+
+                <main>
+                    <strong>&lt;main&gt;</strong> - Main content area
+                    <p>The primary content of the document (only one per page)</p>
+
+                    <div style="margin-top: 1rem; padding: 1rem; background: white; border-radius: 4px;">
+                        <strong>&lt;section&gt;</strong> - Thematic grouping of content<br>
+                        <strong>&lt;article&gt;</strong> - Independent, self-contained content<br>
+                        <strong>&lt;aside&gt;</strong> - Sidebar content related to main content
+                    </div>
+                </main>
+
+                <aside>
+                    <strong>&lt;aside&gt;</strong> - Sidebar content
+                    <p>Related links, advertisements, author info, etc.</p>
+                </aside>
+
+                <footer>
+                    <strong>&lt;footer&gt;</strong> - Footer information
+                    <p>Copyright, contact info, related links</p>
+                </footer>
+            </div>
+
+            <div class="code-example">
+                <pre><code>&lt;!-- Semantic HTML5 Document Structure --&gt;
+&lt;header&gt;
+    &lt;h1&gt;Site Title&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;&lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Article Title&lt;/h1&gt;
+            &lt;time datetime="2025-10-07"&gt;October 7, 2025&lt;/time&gt;
+        &lt;/header&gt;
+        &lt;p&gt;Article content...&lt;/p&gt;
+        &lt;footer&gt;
+            &lt;p&gt;By &lt;address&gt;Author Name&lt;/address&gt;&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/article&gt;
+    
+    &lt;aside&gt;
+        &lt;h2&gt;Related Articles&lt;/h2&gt;
+        &lt;!-- Related content --&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;&copy; 2025 Example Site&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Article and Section Demo -->
+        <section class="semantic-demo">
+            <h2>Article and Section Elements</h2>
+
+            <div class="grid-demo">
+                <div>
+                    <h3>Article Example</h3>
+                    <article class="article-demo">
+                        <header>
+                            <h4>The Future of Web Development</h4>
+                            <p>
+                                Published on <time datetime="2025-10-07">October 7, 2025</time>
+                                by
+                            <address>Jane Developer</address>
+                            </p>
+                        </header>
+
+                        <div class="content">
+                            <p>Web development continues to evolve with new technologies...</p>
+
+                            <section>
+                                <h5>Emerging Technologies</h5>
+                                <p>WebAssembly, WebGPU, and Web Components are reshaping...</p>
+                            </section>
+
+                            <section>
+                                <h5>Performance Considerations</h5>
+                                <p>Modern frameworks focus on optimization...</p>
+                            </section>
+                        </div>
+
+                        <footer>
+                            <p>
+                                Tags:
+                                <span class="tag">HTML5</span>
+                                <span class="tag">WebDev</span>
+                                <span class="tag">Performance</span>
+                            </p>
+                        </footer>
+                    </article>
+                </div>
+
+                <div>
+                    <h3>Semantic Code</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;article&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Article Title&lt;/h1&gt;
+        &lt;time datetime="2025-10-07"&gt;
+            October 7, 2025
+        &lt;/time&gt;
+        &lt;address&gt;Author Name&lt;/address&gt;
+    &lt;/header&gt;
+    
+    &lt;section&gt;
+        &lt;h2&gt;Section Title&lt;/h2&gt;
+        &lt;p&gt;Section content...&lt;/p&gt;
+    &lt;/section&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;Article metadata&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Text-level Semantics -->
+        <section class="semantic-demo">
+            <h2>Text-level Semantic Elements</h2>
+
+            <div class="grid-demo">
+                <div>
+                    <h3>Demonstrations</h3>
+                    <p><strong>&lt;strong&gt;</strong> - <strong>Important text</strong> (semantic emphasis)</p>
+                    <p><strong>&lt;em&gt;</strong> - <em>Emphasized text</em> (stress emphasis)</p>
+                    <p><strong>&lt;mark&gt;</strong> - <mark>Highlighted text</mark> (relevance)</p>
+                    <p><strong>&lt;small&gt;</strong> - <small>Fine print, disclaimers</small></p>
+                    <p><strong>&lt;del&gt;</strong> - <del>Deleted text</del> (removed content)</p>
+                    <p><strong>&lt;ins&gt;</strong> - <ins>Inserted text</ins> (added content)</p>
+                    <p><strong>&lt;sub&gt;</strong> - H<sub>2</sub>O (subscript)</p>
+                    <p><strong>&lt;sup&gt;</strong> - E=mc<sup>2</sup> (superscript)</p>
+                    <p><strong>&lt;code&gt;</strong> - <code>const variable = 'value';</code></p>
+                    <p><strong>&lt;kbd&gt;</strong> - Press <kbd>Ctrl+C</kbd> to copy</p>
+                    <p><strong>&lt;samp&gt;</strong> - <samp>Command executed successfully</samp></p>
+                    <p><strong>&lt;var&gt;</strong> - <var>x</var> = <var>y</var> + 2</p>
+
+                    <blockquote cite="https://www.w3.org/TR/html52/">
+                        <p>"The HTML5 specification defines the meaning of each element,
+                            which helps browsers, search engines, and assistive technologies
+                            understand your content."</p>
+                        <footer>— <cite>W3C HTML5.2 Specification</cite></footer>
+                    </blockquote>
+                </div>
+
+                <div>
+                    <h3>Code Examples</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;!-- Emphasis and importance --&gt;
+&lt;p&gt;This is &lt;strong&gt;very important&lt;/strong&gt;!&lt;/p&gt;
+&lt;p&gt;You &lt;em&gt;really&lt;/em&gt; should know this.&lt;/p&gt;
+
+&lt;!-- Edits and changes --&gt;
+&lt;p&gt;Price: &lt;del&gt;$100&lt;/del&gt; &lt;ins&gt;$80&lt;/ins&gt;&lt;/p&gt;
+
+&lt;!-- Code and technical content --&gt;
+&lt;p&gt;Use &lt;code&gt;console.log()&lt;/code&gt; for debugging.&lt;/p&gt;
+&lt;p&gt;Press &lt;kbd&gt;F12&lt;/kbd&gt; to open DevTools.&lt;/p&gt;
+
+&lt;!-- Citations and quotes --&gt;
+&lt;blockquote cite="source-url"&gt;
+    &lt;p&gt;Quote text here&lt;/p&gt;
+    &lt;footer&gt;— &lt;cite&gt;Source&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Microdata and Structured Data -->
+        <section class="semantic-demo">
+            <h2>Microdata and Structured Data</h2>
+            <p>Microdata helps search engines understand your content better, improving SEO.</p>
+
+            <div class="microdata-demo">
+                <h3>Product Example with Microdata</h3>
+                <div itemscope itemtype="https://schema.org/Product">
+                    <h4 itemprop="name">Advanced HTML5 Course</h4>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzIxOTZGMyIvPjx0ZXh0IHg9IjUwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMTQiPkNvdXJzZTwvdGV4dD48L3N2Zz4="
+                        alt="Course thumbnail" itemprop="image"
+                        style="width: 100px; height: 100px; border-radius: 8px;">
+                    <p itemprop="description">Learn advanced HTML5 features, semantic elements, and modern web
+                        development techniques.</p>
+
+                    <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <span>Price: $<span itemprop="price">99</span></span>
+                        <span itemprop="priceCurrency" content="USD"></span>
+                        <span>Available: <span itemprop="availability" content="https://schema.org/InStock">In
+                                Stock</span></span>
+                    </div>
+
+                    <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                        <span>Rating: <span itemprop="ratingValue">4.8</span>/<span
+                                itemprop="bestRating">5</span></span>
+                        <span>(<span itemprop="reviewCount">127</span> reviews)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <pre><code>&lt;div itemscope itemtype="https://schema.org/Product"&gt;
+    &lt;h1 itemprop="name"&gt;Product Name&lt;/h1&gt;
+    &lt;img itemprop="image" src="product.jpg" alt="Product"&gt;
+    &lt;p itemprop="description"&gt;Product description&lt;/p&gt;
+    
+    &lt;div itemprop="offers" itemscope itemtype="https://schema.org/Offer"&gt;
+        &lt;span&gt;Price: $&lt;span itemprop="price"&gt;99&lt;/span&gt;&lt;/span&gt;
+        &lt;span itemprop="priceCurrency" content="USD"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Accessibility Features -->
+        <section class="semantic-demo">
+            <h2>Accessibility and ARIA</h2>
+
+            <div class="accessibility-demo">
+                <h3>Skip Links Demo</h3>
+                <p>Click here and press Tab to see the skip link:</p>
+                <div class="skip-link-demo">
+                    <a href="#main-content" class="skip-link">Skip to main content</a>
+                    <button>Focusable element</button>
+                    <div id="main-content">
+                        <h4>Main Content</h4>
+                        <p>This is the main content area that skip links would jump to.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-demo">
+                <div>
+                    <h3>ARIA Landmarks</h3>
+                    <div class="landmark-highlight">
+                        <strong>Navigation:</strong> <code>role="navigation"</code><br>
+                        <strong>Main Content:</strong> <code>role="main"</code><br>
+                        <strong>Banner:</strong> <code>role="banner"</code><br>
+                        <strong>Content Info:</strong> <code>role="contentinfo"</code><br>
+                        <strong>Search:</strong> <code>role="search"</code>
+                    </div>
+
+                    <h4>Form Accessibility</h4>
+                    <form>
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="demo-name">Full Name (required)</label>
+                            <input type="text" id="demo-name" name="name" required aria-describedby="name-help"
+                                aria-required="true">
+                            <div id="name-help" style="font-size: 0.9rem; color: #666;">
+                                Please enter your first and last name
+                            </div>
+                        </div>
+
+                        <fieldset style="border: 1px solid #ddd; padding: 1rem; border-radius: 4px;">
+                            <legend>Preferred Contact Method</legend>
+                            <input type="radio" id="contact-email" name="contact" value="email">
+                            <label for="contact-email">Email</label><br>
+                            <input type="radio" id="contact-phone" name="contact" value="phone">
+                            <label for="contact-phone">Phone</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div>
+                    <h3>ARIA Code Examples</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;!-- Landmarks --&gt;
+&lt;nav role="navigation" aria-label="Main"&gt;
+&lt;main role="main"&gt;
+&lt;aside role="complementary"&gt;
+
+&lt;!-- Labels and descriptions --&gt;
+&lt;input type="text" 
+       aria-label="Search products"
+       aria-describedby="search-help"&gt;
+&lt;div id="search-help"&gt;
+    Enter keywords to search
+&lt;/div&gt;
+
+&lt;!-- Live regions --&gt;
+&lt;div aria-live="polite" 
+     aria-atomic="true"&gt;
+    Status updates appear here
+&lt;/div&gt;
+
+&lt;!-- Expanded/collapsed state --&gt;
+&lt;button aria-expanded="false" 
+        aria-controls="menu"&gt;
+    Toggle Menu
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HTML5 Outline -->
+        <section class="semantic-demo">
+            <h2>Document Outline and Heading Structure</h2>
+
+            <div class="grid-demo">
+                <div>
+                    <h3>Proper Heading Hierarchy</h3>
+                    <div style="background: #f9f9f9; padding: 1rem; border-radius: 4px;">
+                        <h4 style="margin-top: 0;">H1 - Page Title</h4>
+                        <div style="margin-left: 1rem;">
+                            <h5>H2 - Section Title</h5>
+                            <div style="margin-left: 1rem;">
+                                <h6>H3 - Subsection Title</h6>
+                                <div style="margin-left: 1rem;">
+                                    <strong>H4 - Sub-subsection</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p><strong>Benefits:</strong></p>
+                    <ul>
+                        <li>Screen readers can navigate by headings</li>
+                        <li>Search engines understand content hierarchy</li>
+                        <li>Automatic table of contents generation</li>
+                        <li>Better document structure</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Section-based Outline</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;!-- Each section resets heading level --&gt;
+&lt;section&gt;
+    &lt;h1&gt;Section Title&lt;/h1&gt;
+    &lt;section&gt;
+        &lt;h1&gt;Subsection Title&lt;/h1&gt;
+        &lt;p&gt;Content...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/section&gt;
+
+&lt;article&gt;
+    &lt;h1&gt;Article Title&lt;/h1&gt;
+    &lt;section&gt;
+        &lt;h1&gt;Article Section&lt;/h1&gt;
+        &lt;p&gt;Content...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="semantic-demo">
+            <h2>Benefits of Semantic HTML</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <div>
+                    <h4>SEO Benefits</h4>
+                    <ul>
+                        <li>Better search engine understanding</li>
+                        <li>Rich snippets and enhanced results</li>
+                        <li>Improved crawling and indexing</li>
+                        <li>Featured snippets eligibility</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Accessibility</h4>
+                    <ul>
+                        <li>Screen reader navigation</li>
+                        <li>Keyboard navigation support</li>
+                        <li>Clear content structure</li>
+                        <li>Assistive technology compatibility</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Maintenance</h4>
+                    <ul>
+                        <li>Self-documenting code</li>
+                        <li>Easier debugging</li>
+                        <li>Better team collaboration</li>
+                        <li>Future-proof markup</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Performance</h4>
+                    <ul>
+                        <li>Cleaner, more efficient code</li>
+                        <li>Better caching strategies</li>
+                        <li>Reduced CSS complexity</li>
+                        <li>Improved load times</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Add some interactive behavior
+        document.addEventListener('DOMContentLoaded', function () {
+            // Highlight code sections on hover
+            const codeExamples = document.querySelectorAll('.code-example');
+            codeExamples.forEach(code => {
+                code.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+
+                code.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Add click-to-copy functionality for code blocks
+            codeExamples.forEach(code => {
+                code.style.cursor = 'pointer';
+                code.title = 'Click to copy code';
+
+                code.addEventListener('click', async function () {
+                    const text = this.querySelector('pre code').textContent;
+                    try {
+                        await navigator.clipboard.writeText(text);
+
+                        // Visual feedback
+                        const originalBorder = this.style.border;
+                        this.style.border = '2px solid #4CAF50';
+                        setTimeout(() => {
+                            this.style.border = originalBorder;
+                        }, 1000);
+                    } catch (err) {
+                        console.error('Failed to copy: ', err);
+                    }
+                });
+            });
+
+            console.log('Semantic HTML demo loaded successfully');
+        });
+    </script>
+</body>
+
+</html>

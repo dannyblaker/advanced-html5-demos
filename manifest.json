@@ -1,0 +1,82 @@
+{
+    "name": "advanced-html-features",
+    "short_name": "AdvancedHTML",
+    "description": "Comprehensive demonstrations of advanced HTML5 features and modern web technologies",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#2196F3",
+    "background_color": "#FFFFFF",
+    "categories": [
+        "education",
+        "developer",
+        "utilities"
+    ],
+    "lang": "en",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "./assets/images/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./assets/images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./assets/images/icon-vector.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "./assets/images/screenshot-wide.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Advanced HTML Features Repository - Desktop view"
+        },
+        {
+            "src": "./assets/images/screenshot-narrow.png",
+            "sizes": "720x1280",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Advanced HTML Features Repository - Mobile view"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "View Features",
+            "short_name": "Features",
+            "description": "Explore advanced HTML5 features",
+            "url": "/#features",
+            "icons": [
+                {
+                    "src": "./assets/images/shortcut-features.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Interactive Demos",
+            "short_name": "Demos",
+            "description": "Try interactive demonstrations",
+            "url": "/#demos",
+            "icons": [
+                {
+                    "src": "./assets/images/shortcut-demos.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "prefer_related_applications": false,
+    "related_applications": []
+}
