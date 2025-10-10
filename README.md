@@ -87,7 +87,7 @@ Each demonstration page features:
 
 ## Why haven't I included WebGL...
 
-There are already so many good examples of WebGL out there that including them here wouldn't do WebGL justice. When working with 3D browser requirements, personally I go to libraries like Three.js which provides a simplified, higher-level API on top of WebGL, making it easier for developers to create 3D scenes, handle rendering, and manage lighting and cameras without needing to write low-level WebGL code.  
+There are already so many good examples of WebGL out there that including a handful here wouldn't do WebGL justice. When working with 3D browser requirements, personally I go to libraries like Three.js which provides a simplified, higher-level API on top of WebGL, making it easier for developers to create 3D scenes, handle rendering, and manage lighting and cameras without needing to write low-level WebGL code.  
    
 ---
 
