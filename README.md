@@ -4,6 +4,8 @@ A comprehensive demonstration of modern HTML5 features and advanced techniques f
 
 **You are most welcome to use this code in your commercial projects, all that I ask in return is that you credit my work by providing a link back to this repository. Thank you & Enjoy!**
 
+[![A Danny Blaker project badge](https://github.com/dannyblaker/dannyblaker.github.io/blob/main/danny_blaker_project_badge.svg)](https://github.com/dannyblaker/)
+
 ## 🚀 Features Demonstrated
 
 - **Semantic HTML5 Elements** - Modern document structure and accessibility
@@ -83,20 +85,10 @@ Each demonstration page features:
 - Caching strategies for performance
 - Background sync capabilities
 
-## 🤝 Contributing
+## Why haven't I included WebGL...
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
-
-## 🙏 Acknowledgments
-
-- MDN Web Docs for comprehensive documentation
-- HTML5 specification contributors
-- Web platform feature implementers
-
+There are already so many good examples of WebGL out there that including them here wouldn't do WebGL justice. When working with 3D browser requirements, personally I go to libraries like Three.js which provides a simplified, higher-level API on top of WebGL, making it easier for developers to create 3D scenes, handle rendering, and manage lighting and cameras without needing to write low-level WebGL code.  
+   
 ---
 
 ⭐ Star this repository if you find it helpful!
